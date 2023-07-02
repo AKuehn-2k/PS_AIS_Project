@@ -4,7 +4,7 @@ import os
 import json
 
 # read csv file
-directory = 'C:/Users/alexa/OneDrive/Uni/S6/PS AIS/CSV_DATA/'
+directory = './CSV_Input/'
 csv_file = max([os.path.join(directory, f) for f in os.listdir(directory) if f.endswith('.csv')], key=os.path.getctime)
 
 # Parse the CSV data and put into data list
