@@ -27,17 +27,17 @@ with open(csv_file, 'r', newline='') as file:
 
 # translate the data list
 lt = LibreTranslateAPI("https://translate.argosopentech.com/")
-translate_label = [['Project'], ['Faculty']]
+not_translate_label = [['Person'], ['Personel'], ['Student'], ['Employee'], ['Lecturer'], ['Professor'], ['Guest Student'], ['Regular Student'], ['Campus']]
 
 translated_data = []
 
 for entry in data:
-    if entry['labels'] in translate_label:
+    if entry['labels'] not in not_translate_label:
         text = entry['text']
         origin_language_dict = lt.detect(text)
         origin_language = origin_language_dict[0]['language']
 
-        text = lt.translate(text, origin_language, 'en')
+        text = lt.translate(text, origin_language, 'de')
 
         translated_entry = {'text': text, 'labels': entry['labels']}
         print(translated_entry)
